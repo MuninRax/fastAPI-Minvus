@@ -4,5 +4,7 @@
 - pip install -r requirement.txt
 - run uvicorn main:app --reload
 
+- run uvicorn main2:app --reload เพื่อให้ run ตัวที่มี Frontend
+
 ### !!!
 - ถ้ามี collection ชื่อเดียวกันบน Milvus จะ error ต้องลบหรือแก้ชื่อในไฟล์ config.py ก่อน หรือไม่ก็แก้โค้ดให้ check

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Price List Search</h1>
+        <form id="searchForm">
+            <input type="text" id="queryText" placeholder="Enter your search query" required>
+            <button type="submit">Search</button>
+        </form>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('searchForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const queryText = document.getElementById('queryText').value;
+
+            const response = await fetch('/search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query_text: queryText })
+            });
+
+            const data = await response.json();
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            if (data.results && data.results.length > 0) {
+                data.results.forEach(item => {
+                    const div = document.createElement('div');
+                    div.classList.add('result-item');
+                    div.innerHTML = `
+                        <p><strong>No:</strong> ${item.no}</p>
+                        <p><strong>Product Code:</strong> ${item.product_code}</p>
+                        <p><strong>Description:</strong> ${item.description}</p>
+                        <p><strong>Unit:</strong> ${item.unit}</p>
+                        <p><strong>Price:</strong> ${item.price}</p>
+                        <p><strong>Catagory Name:</strong> ${item.category_name}</p>
+                        <p><strong>Note:</strong> ${item.note}</p>
+                    `;
+                    resultsDiv.appendChild(div);
+                });
+            } else {
+                resultsDiv.innerHTML = '<p>No results found.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
