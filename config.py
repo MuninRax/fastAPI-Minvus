@@ -1,4 +1,4 @@
-MILVUS_HOST = "127.0.0.1"
+MILVUS_HOST = "standalone"
 MILVUS_PORT = "19530"
 COLLECTION_NAME = "Test11"
 EN_MODEL_NAME = "sentence-transformers/all-MiniLM-L12-v2"
