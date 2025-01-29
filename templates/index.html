@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Price List Search</title>
+    <title>Price List search</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -22,7 +22,7 @@
             e.preventDefault();
             const queryText = document.getElementById('queryText').value;
 
-            const response = await fetch('/search', {
+            const response = await fetch('/price-list-search', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query_text: queryText })

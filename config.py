@@ -1,11 +1,10 @@
-
 MILVUS_HOST = "127.0.0.1"
 MILVUS_PORT = "19530"
-
-COLLECTION_NAME = "Test2"
-EMBED_NAME = "sentence-transformers/LaBSE"
+COLLECTION_NAME = "Test11"
+EN_MODEL_NAME = "sentence-transformers/all-MiniLM-L12-v2"
+TH_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 METRIC_TYPE = "COSINE"
-DIMENSION = 768  
+DIMENSION = 384  
 N_LIST = 128
 N_PROBE = 10
 TOP_K = 5 
